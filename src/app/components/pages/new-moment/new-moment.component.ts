@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
 import { IMoment } from "src/app/interfaces/Moment";
 import { MomentService } from "src/app/services/moment.service";
 import { MessagesService } from "src/app/services/messages.service";
@@ -13,7 +14,8 @@ export class NewMomentComponent implements OnInit {
 
   constructor(
     private momentService: MomentService,
-    private messagesService: MessagesService
+    private messagesService: MessagesService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {}
@@ -31,5 +33,7 @@ export class NewMomentComponent implements OnInit {
     await this.momentService.createMoment(formData).subscribe();
 
     this.messagesService.add("Momento adicionado com sucesso!");
+
+    this.router.navigate(["/"]);
   }
 }
