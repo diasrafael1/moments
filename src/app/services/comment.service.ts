@@ -11,11 +11,12 @@ import { IResponse } from "../interfaces/Response";
 })
 export class CommentService {
   private baseApiUrl = environment.baseApiUrl;
-  private apiUrl = `${this.baseApiUrl}api/moments/comments`;
+  private apiUrl = `${this.baseApiUrl}api/moments`;
 
   constructor(private http: HttpClient) {}
 
   createComment(data: IComment): Observable<IResponse<IComment>> {
-    return this.http.post<IResponse<IComment>>(this.apiUrl, data);
+    const url = `${this.apiUrl}/${data.momentId}/comments`;
+    return this.http.post<IResponse<IComment>>(url, data);
   }
 }
