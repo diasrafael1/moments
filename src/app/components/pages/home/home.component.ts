@@ -19,7 +19,7 @@ export class HomeComponent implements OnInit {
   constructor(private momentService: MomentService) {}
 
   ngOnInit(): void {
-    this.momentService.getMoment().subscribe((response) => {
+    this.momentService.getMoments().subscribe((response) => {
       const data = response.data;
 
       data.map((item) => {

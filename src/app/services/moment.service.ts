@@ -18,7 +18,11 @@ export class MomentService {
     return this.http.post<FormData>(this.apiUrl, formData);
   }
 
-  getMoment(): Observable<Response<IMoment[]>> {
+  getMoments(): Observable<Response<IMoment[]>> {
     return this.http.get<Response<IMoment[]>>(this.apiUrl);
+  }
+
+  getMoment(id: number): Observable<Response<IMoment>> {
+    return this.http.get<Response<IMoment>>(`${this.apiUrl}/${id}`);
   }
 }
